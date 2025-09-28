@@ -16,6 +16,12 @@ const io = new Server(server, {
 
 io.use(socketAuthMiddleware); // every socket connections will have a middleware
 
+
+// here we are checking if user is online or not, 
+export function getReceiverSocketId(userId) {
+  return userSocketMap[userId]
+}
+
 const userSocketMap = {}; // store online users
 
 io.on("connection", (socket) => {
